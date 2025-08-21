@@ -47,7 +47,6 @@
 
 // app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-
 import express from "express";
 import cors from "cors";
 import nodemailer from "nodemailer";
@@ -86,9 +85,9 @@ app.post("/api/contact", async (req, res) => {
 
   const mailOptions = {
     from: `"${name}" <${email}>`,
-    to: "sutharsan112112@gmail.com",
+    to: process.env.MAIL_USER,
     subject: subject,
-    text: `You received a new message from your portfolio contact form:\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`,
+    text: `You received a new message:\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`,
   };
 
   try {
